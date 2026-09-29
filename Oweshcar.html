@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owesh Car</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f2f4f7;
+  color: #222;
+}
+
+header {
+  background: #111;
+  color: white;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.search-btn {
+  background: white;
+  color: #111;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.hero {
+  text-align: center;
+  padding: 45px 20px;
+  background: linear-gradient(135deg, #111, #333);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  margin-bottom: 22px;
+}
+
+.start-btn {
+  background: #ff3b30;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.search-box {
+  display: none;
+  padding: 15px;
+  text-align: center;
+  background: white;
+}
+
+.search-box input {
+  width: 90%;
+  max-width: 500px;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+}
+
+#cars {
+  display: none;
+  padding: 25px 15px;
+}
+
+.car-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,.12);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card h2 {
+  margin-bottom: 8px;
+}
+
+.price {
+  color: #ff3b30;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.buy-btn {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  background: #111;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.no-result {
+  text-align: center;
+  display: none;
+  margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🚗 Owesh Car</div>
+  <button class="search-btn" onclick="toggleSearch()">🔍 Search</button>
+</header>
+
+<section class="hero">
+  <h1>Owesh Car</h1>
+  <p>Find your dream car</p>
+  <button class="start-btn" onclick="startApp()">Start</button>
+</section>
+
+<div class="search-box" id="searchBox">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search car..."
+    onkeyup="searchCars()"
+  >
+</div>
+
+<section id="cars">
+
+  <div class="car-container" id="carContainer">
+
+    <div class="card" data-name="BMW M5">
+      <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h2>BMW M5</h2>
+        <p>Luxury & Performance</p>
+        <div class="price">₹1.75 Crore</div>
+        <button class="buy-btn">View Car</button>
+      </div>
+    </div>
+
+    <div class="card" data-name="Mercedes AMG">
+      <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h2>Mercedes AMG</h2>
+        <p>Powerful luxury car</p>
+        <div class="price">₹2.45 Crore</div>
+        <button class="buy-btn">View Car</button>
+      </div>
+    </div>
+
+    <div class="card" data-name="Audi R8">
+      <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h2>Audi R8</h2>
+        <p>Sports & Luxury</p>
+        <div class="price">₹2.30 Crore</div>
+        <button class="buy-btn">View Car</button>
+      </div>
+    </div>
+
+    <div class="card" data-name="Lamborghini Huracan">
+      <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h2>Lamborghini Huracan</h2>
+        <p>Super Sports Car</p>
+        <div class="price">₹3.50 Crore</div>
+        <button class="buy-btn">View Car</button>
+      </div>
+    </div>
+
+    <div class="card" data-name="Porsche 911">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h2>Porsche 911</h2>
+        <p>Iconic Sports Car</p>
+        <div class="price">₹2.10 Crore</div>
+        <button class="buy-btn">View Car</button>
+      </div>
+    </div>
+
+    <div class="card" data-name="Range Rover">
+      <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h2>Range Rover</h2>
+        <p>Luxury SUV</p>
+        <div class="price">₹2.80 Crore</div>
+        <button class="buy-btn">View Car</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="no-result" id="noResult">
+    No car found 🚗
+  </div>
+
+</section>
+
+<script>
+
+function startApp() {
+  document.getElementById("cars").style.display = "block";
+  document.getElementById("searchBox").style.display = "block";
+
+  document.getElementById("cars").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function toggleSearch() {
+  const box = document.getElementById("searchBox");
+
+  if (box.style.display === "block") {
+    box.style.display = "none";
+  } else {
+    box.style.display = "block";
+    document.getElementById("searchInput").focus();
+  }
+}
+
+function searchCars() {
+
+  const input = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  const cards = document.querySelectorAll(".card");
+  let found = false;
+
+  cards.forEach(card => {
+
+    const name = card
+      .getAttribute("data-name")
+      .toLowerCase();
+
+    if (name.includes(input)) {
+      card.style.display = "block";
+      found = true;
+    } else {
+      card.style.display = "none";
+    }
+
+  });
+
+  document.getElementById("noResult").style.display =
+    found ? "none" : "block";
+}
+
+</script>
+
+</body>
+  </html>
